@@ -3,43 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тестовий сайт Lentiay</title>
+    <title>Інтерактивний сайт Lentiay</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            background-color: #282c34;
+            color: white;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
         h1 {
-            color: #4CAF50;
-            margin-top: 50px;
+            font-size: 3em;
+            margin-top: 20px;
+            animation: fadeIn 2s;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #4CAF50;
+            background-color: #61dafb;
             border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: black;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #21a1f1;
+        }
+        #timer {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #ffd700;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Вітаємо на сайті Lentiay!</h1>
-    <p>Це тестова сторінка для перевірки вашого GitHub Pages.</p>
-    <button onclick="changeBackgroundColor()">Змінити колір фону</button>
+    <h1>Ласкаво просимо на сайт Lentiay!</h1>
+    <p>Це демонстрація інтерактивної веб-сторінки з JavaScript.</p>
+
+    <div id="timer">Час: 00:00:00</div>
+    <button onclick="changeBackground()">Змінити фон</button>
+    <button onclick="displayMessage()">Показати повідомлення</button>
 
     <script>
-        function changeBackgroundColor() {
-            const colors = ['#f0f0f0', '#ffcccb', '#d1e7dd', '#cfe2ff', '#fff3cd'];
-            document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        // Таймер
+        function startTimer() {
+            const timerElement = document.getElementById('timer');
+            setInterval(() => {
+                const now = new Date();
+                const time = now.toLocaleTimeString('uk-UA');
+                timerElement.textContent = `Час: ${time}`;
+            }, 1000);
+        }
+        startTimer();
+
+        // Зміна фону
+        function changeBackground() {
+            const colors = ['#282c34', '#4caf50', '#f44336', '#2196f3', '#ffeb3b'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        // Повідомлення
+        function displayMessage() {
+            alert('Це ваше персональне повідомлення! Дякую за відвідування сайту.');
         }
     </script>
 </body>
