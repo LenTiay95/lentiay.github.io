@@ -3,83 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Інтерактивний сайт Lentiay</title>
+    <title>Онлайн Радіо України</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #282c34;
             color: white;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             text-align: center;
         }
         h1 {
-            font-size: 3em;
-            margin-top: 20px;
-            animation: fadeIn 2s;
+            margin-bottom: 20px;
         }
-        p {
-            font-size: 1.2em;
-            margin: 20px;
+        .radio-container {
+            margin: 20px 0;
         }
         button {
-            background-color: #61dafb;
-            border: none;
+            background-color: #4caf50;
+            color: white;
             padding: 10px 20px;
-            font-size: 1em;
-            color: black;
+            border: none;
             border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            margin: 5px;
         }
         button:hover {
-            background-color: #21a1f1;
+            background-color: #45a049;
         }
-        #timer {
-            font-size: 2em;
-            margin: 20px 0;
-            color: #ffd700;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        audio {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 300px;
         }
     </style>
 </head>
 <body>
-    <h1>Ласкаво просимо на сайт Lentiay!</h1>
-    <p>Це демонстрація інтерактивної веб-сторінки з JavaScript.</p>
+    <h1>Онлайн Радіо України</h1>
+    <p>Виберіть станцію та натисніть "Play".</p>
 
-    <div id="timer">Час: 00:00:00</div>
-    <button onclick="changeBackground()">Змінити фон</button>
-    <button onclick="displayMessage()">Показати повідомлення</button>
+    <div class="radio-container">
+        <button onclick="playStation('https://radiomaria.org.ua:8000/rm')">Радіо Марія</button>
+        <button onclick="playStation('http://online-radio.eu/rrc-ua.mp3')">Радіо Рокс</button>
+        <button onclick="playStation('http://stream.holos.fm:8000/128')">Голос</button>
+    </div>
+
+    <audio id="radioPlayer" controls>
+        Ваш браузер не підтримує аудіо елемент.
+    </audio>
 
     <script>
-        // Таймер
-        function startTimer() {
-            const timerElement = document.getElementById('timer');
-            setInterval(() => {
-                const now = new Date();
-                const time = now.toLocaleTimeString('uk-UA');
-                timerElement.textContent = `Час: ${time}`;
-            }, 1000);
-        }
-        startTimer();
+        const player = document.getElementById('radioPlayer');
 
-        // Зміна фону
-        function changeBackground() {
-            const colors = ['#282c34', '#4caf50', '#f44336', '#2196f3', '#ffeb3b'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            document.body.style.backgroundColor = randomColor;
-        }
-
-        // Повідомлення
-        function displayMessage() {
-            alert('Це ваше персональне повідомлення! Дякую за відвідування сайту.');
+        function playStation(url) {
+            player.src = url;
+            player.play();
         }
     </script>
 </body>
