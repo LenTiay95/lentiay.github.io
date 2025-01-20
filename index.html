@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #282c34;
+            background-color: #2c3e50;
             color: white;
             margin: 0;
             padding: 20px;
@@ -20,7 +20,7 @@
             margin: 20px 0;
         }
         button {
-            background-color: #4caf50;
+            background-color: #3498db;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -30,7 +30,7 @@
             margin: 5px;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #2980b9;
         }
         audio {
             margin-top: 20px;
@@ -41,12 +41,12 @@
 </head>
 <body>
     <h1>Онлайн Радіо України</h1>
-    <p>Виберіть станцію та натисніть "Play".</p>
+    <p>Натисніть на кнопку для прослуховування радіо.</p>
 
     <div class="radio-container">
-        <button onclick="playStation('https://radiomaria.org.ua:8000/rm')">Радіо Марія</button>
-        <button onclick="playStation('http://online-radio.eu/rrc-ua.mp3')">Радіо Рокс</button>
-        <button onclick="playStation('http://stream.holos.fm:8000/128')">Голос</button>
+        <button onclick="playStation('http://cast.radiogroup.com.ua:8000/RadioROKS')">Радіо Рокс</button>
+        <button onclick="playStation('http://online.kissfm.ua/KissFM_128')">Kiss FM</button>
+        <button onclick="playStation('http://icecast.nrcu.gov.ua/ur1-mp3')">Українське радіо</button>
     </div>
 
     <audio id="radioPlayer" controls>
